@@ -38,8 +38,6 @@ def update():
     for row in range(LED_DIMENSIONS[0]):
         for col in range(LED_DIMENSIONS[1]):
             colors[row][col] = random.randint(0, 0xffffff)
-            print((row, col), colors[row][col])
-    # assert False
     m.after(UPDATE_RATE, update)
 
 def draw():
@@ -52,9 +50,7 @@ def draw():
             x1 = col * LED_SPACE + OFFSET
             y1 = row * LED_SPACE + OFFSET
             color = convert_color(colors[row][col])
-            print((row, col), colors[row][col], color)
             can.create_rectangle(x1, y1, x1 + LED_SIZE, y1 + LED_SIZE, fill=color)
-    # assert False
     m.after(DRAW_RATE, draw)
 
 update()
