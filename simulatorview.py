@@ -11,7 +11,7 @@ SCREEN_DIMENSIONS = (500, 500)
 LED_SIZE = 10 # px
 LED_SPACE = 30 # px
 OFFSET = 25
-DRAW_RATE = int(1000 / 30.0)
+DRAW_RATE = int(1000 / 10.0)
 UPDATE_RATE = int(1000 / 30.0)
 
 class SimulatorView(View):
@@ -32,6 +32,7 @@ class SimulatorView(View):
 
     def internal_draw(self):
         self.update()
+        self.can.delete(tkinter.ALL)
         # black background
         self.can.create_rectangle(0, 0, SCREEN_DIMENSIONS[0], SCREEN_DIMENSIONS[1], fill="black")
         
