@@ -7,7 +7,8 @@ import inspect
 from pattern.pattern import Pattern
 
 patterns = [
-    'pattern.testpattern'
+    'pattern.testpattern',
+    'pattern.spiralpattern'
 ]
 
 class PatternManager():
@@ -16,7 +17,7 @@ class PatternManager():
     """
 
     def __init__(self, colors, dimensions):
-        self.handler_index = 0
+        self.handler_index = 1
         self.handlers = []
         # load all of the patterns
         for p in patterns:
