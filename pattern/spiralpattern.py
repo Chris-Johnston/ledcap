@@ -32,9 +32,6 @@ class SpiralPattern(Pattern):
             l = -30.0
             mod = (angle + biddle * time.time() - l * math.log(rad)) % quiddle
             if mod < biddle:
-                val = 0xff00ff | int(0xff00 * (1.0 - (rad / 14)))
-                val &= 0xffffff
-                # self[idx] = 0xffffff
-                self[idx] = val
+                self[idx] = 0x00ffff
             else:
                 self[idx] = 0x0

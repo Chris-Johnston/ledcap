@@ -8,7 +8,8 @@ from pattern.pattern import Pattern
 
 patterns = [
     'pattern.testpattern',
-    'pattern.spiralpattern'
+    'pattern.spiralpattern',
+    'pattern.lifepattern'
 ]
 
 class PatternManager():
@@ -17,7 +18,7 @@ class PatternManager():
     """
 
     def __init__(self, colors, dimensions):
-        self.handler_index = 1
+        self.handler_index = 2
         self.handlers = []
         # load all of the patterns
         for p in patterns:
