@@ -12,7 +12,8 @@ patterns = [
     'pattern.lifepattern',
     'pattern.phasespattern',
     'pattern.blinkypattern',
-    'pattern.gifpattern'
+    'pattern.gifpattern',
+    'pattern.msftlogopattern'
 ]
 
 class PatternManager():
