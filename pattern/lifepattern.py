@@ -74,7 +74,7 @@ class LifePattern(Pattern):
 
     def update(self):
         time.sleep(0.2)        
-        for _ in range(5):
+        for _ in range(10):
             self.randomly_set()
         self.process_life()
         for idx, _ in self:
