@@ -14,6 +14,7 @@ patterns = [
     'pattern.blinkypattern',
     'pattern.gifpattern',
     'pattern.msftlogopattern',
+    'pattern.uwpattern',
     'pattern.offpattern'
 ]
 
