@@ -31,5 +31,11 @@ class PatternManager():
                     instance = obj(colors, dimensions)
                     self.handlers.append(instance)
 
+    def next_pattern(self):
+        self.handler_index = (self.handler_index + 1) % len(patterns)
+
+    def prev_pattern(self):
+        self.handler_index = (self.handler_index - 1) % len(patterns)
+
     def update(self):
         self.handlers[self.handler_index].update()

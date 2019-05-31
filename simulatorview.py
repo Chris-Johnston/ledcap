@@ -19,7 +19,7 @@ class SimulatorView(View):
         # canvas widget
         self.m = tkinter.Tk()
         self.can = tkinter.Canvas(self.m, width=SCREEN_DIMENSIONS[0], height=SCREEN_DIMENSIONS[1])
-        self.can.pack()
+        self.packed = False
         self.colors = colors
         self.update = update
         self.dimensions = dimensions
@@ -49,5 +49,8 @@ class SimulatorView(View):
         """
         calls tk blocking main loop
         """
+        if not self.packed:
+            self.can.pack()
+            self.packed = True
         self.m.after(DRAW_RATE, self.internal_draw)
         tkinter.mainloop()
