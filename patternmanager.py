@@ -11,7 +11,8 @@ patterns = [
     'pattern.spiralpattern',
     'pattern.lifepattern',
     'pattern.phasespattern',
-    'pattern.blinkypattern'
+    'pattern.blinkypattern',
+    'pattern.gifpattern'
 ]
 
 class PatternManager():
@@ -20,7 +21,7 @@ class PatternManager():
     """
 
     def __init__(self, colors, dimensions):
-        self.handler_index = 4
+        self.handler_index = 5
         self.handlers = []
         # load all of the patterns
         for p in patterns:
