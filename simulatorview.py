@@ -16,14 +16,12 @@ UPDATE_RATE = int(1000 / 30.0)
 
 class SimulatorView(View):
     def __init__(self, colors: list, dimensions: tuple, update):
+        super().__init__(colors, dimensions, update)
         # canvas widget
         self.m = tkinter.Tk()
         self.can = tkinter.Canvas(self.m, width=SCREEN_DIMENSIONS[0], height=SCREEN_DIMENSIONS[1])
         self.packed = False
-        self.colors = colors
-        self.update = update
-        self.dimensions = dimensions
-
+        
     def convert_color(self, color_val: int) -> str:
         """
         Converts a color value into a hex string.

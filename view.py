@@ -12,8 +12,13 @@ Maintains a delta time, which is how long it took in between each update.
 from abc import ABC, abstractmethod
 
 class View(ABC):
+    def __init__(self, colors: list, dimensions: tuple, update):
+        self.colors = colors
+        self.dimensions = dimensions
+        self.update = update
+
     @abstractmethod
-    def draw():
+    def draw(self):
         """
         Draws the state of the lights
         on the GUI or actual hardware.
