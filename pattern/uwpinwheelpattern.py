@@ -60,6 +60,6 @@ class UWPinwheelPattern(Pattern):
             self[index] = 0xffffff & (int(r) << 16 | int(g) << 8 | int(b))
         self.chase_index += 1
 
-        for x in range(5):
-            idx = random.randint(0, 14 * 14 - 1)
-            self[idx] = 0xffffff
+        # for x in range(5):
+        #     idx = random.randint(0, 14 * 14 - 1)
+        #     self[idx] = 0xffffff
