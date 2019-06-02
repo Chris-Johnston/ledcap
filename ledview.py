@@ -31,8 +31,9 @@ class LedView(View):
         """
         Draw the leds in a loop, blocks
         """
-        with ws.Adafruit_NeoPixel(self.count, 18, 800000, 10, False, brightness) as strip:
-            while True:
-                self.update()
-                self.internal_draw(strip)
-                strip.show(0) 
+        strip = ws.Adafruit_NeoPixel(self.count, 18, 800000, 10, False, brightness)
+        strip.begin()
+        while True:
+            self.update()
+            self.internal_draw(strip)
+            strip.show()
