@@ -17,7 +17,7 @@ class LedController(Controller):
         # TODO ensure that the leds don't break this
         # may have to poll instead
         GPIO.add_event_detect(BUTTON_NEXT, GPIO.RISING, callback=self.next_callback)
-        GPIO.add_event_detect(BUTTON_NEXT, GPIO.RISING, callback=self.prev_callback)
+        GPIO.add_event_detect(BUTTON_PREV, GPIO.RISING, callback=self.prev_callback)
 
     def prev_callback(self, event):
         self.pattern_manager.prev_pattern()
