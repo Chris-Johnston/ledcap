@@ -1,0 +1,20 @@
+# LED cap Service
+# install using:
+# #/bin/bash
+# chmod 664 ledcap.service
+# cp ledcap.service /etc/systemd/system/ledcap.service
+
+[Unit]
+Description=LED Cap control program
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/pi/ledcap
+ExecStart=/usr/bin/python3 /home/pi/ledcap/led.py
+Restart=on-failure
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
