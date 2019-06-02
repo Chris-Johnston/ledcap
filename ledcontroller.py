@@ -19,7 +19,7 @@ class LedController(Controller):
         GPIO.add_event_detect(BUTTON_NEXT, GPIO.RISING, callback=self.next_callback)
         GPIO.add_event_detect(BUTTON_NEXT, GPIO.RISING, callback=self.prev_callback)
 
-    def next_callback(self, event):
+    def prev_callback(self, event):
         self.pattern_manager.prev_pattern()
 
     def next_callback(self, event):
