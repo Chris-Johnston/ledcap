@@ -25,7 +25,7 @@ class LedView(View):
         for x in range(self.dimensions[0]):
             for y in range(self.dimensions[1]):
                 index = self.coord_to_strip_index(x, y)
-                strip.setPixelColor(index, self.colors[x][y])
+                strip.setPixelColor(index, self.colors[:x][:y])
 
     def draw(self):
         """
