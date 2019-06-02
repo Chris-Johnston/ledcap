@@ -1,25 +1,18 @@
 """
-UW Pattern
+UW Pinwheel
 """
 
 from pattern.pattern import Pattern
 import random
-from PIL import Image
 import time
-
-image = 'gif/uw_bright.gif'
 
 PURPLE = 0x65, 0x39, 0x99
 GOLD = 0xef, 0xe3, 0x62
 
-class UWPattern(Pattern):
+class UWPinwheelPattern(Pattern):
     def __init__(self, colors: list, dimensions: tuple):
         super().__init__(colors, dimensions)
-        self.load_gif(image)
         self.chase_index = 0
-
-    def load_gif(self, path):
-        self.image = Image.open(path)
 
     def get_edge_coordinates(self):
         count = 0
@@ -37,15 +30,9 @@ class UWPattern(Pattern):
             count += 1
     
     def update(self):
-        rgb = self.image.convert('RGBA')
+        # black out everything
         for idx, _ in self:
-            x, y = self.index_to_coords(idx)
-            coord = (y, x)
-            r, g, b, a = rgb.getpixel(coord)
-            r *= a / 255.0
-            g *= a / 255.0
-            b *= a / 255.0
-            self[idx] = int(0xffffff) & (int(r) << 16 | int(g) << 8 | int(b))
+            self[idx] = 0
         # add a 'chasing' thing around the corner
         for x, y, count in self.get_edge_coordinates():
             # print('edge: ', x, y, count)
@@ -73,6 +60,6 @@ class UWPattern(Pattern):
             self[index] = 0xffffff & (int(r) << 16 | int(g) << 8 | int(b))
         self.chase_index += 1
 
-        # randomly add sparkles
-        for idx, val in self:
-            self[idx] = 0xffffff if random.randint(0, 100) > 99 else val
+        for x in range(5):
+            idx = random.randint(0, 14 * 14 - 1)
+            self[idx] = 0xffffff

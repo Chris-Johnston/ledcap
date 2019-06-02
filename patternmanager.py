@@ -15,9 +15,11 @@ patterns = [
     'pattern.gifpattern',
     'pattern.msftlogopattern',
     'pattern.uwpattern',
+    'pattern.uwpinwheelpattern',
     'pattern.clockpattern',
     'pattern.offpattern',
-    'pattern.hackerpattern'
+    'pattern.hackerpattern',
+    'pattern.dvdpattern'
 ]
 
 class PatternManager():
@@ -26,7 +28,7 @@ class PatternManager():
     """
 
     def __init__(self, colors, dimensions):
-        self.handler_index = 10
+        self.handler_index = 11
         self.handlers = []
         # load all of the patterns
         for p in patterns:
