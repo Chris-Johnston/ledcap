@@ -3,6 +3,8 @@
 # #/bin/bash
 # chmod 664 ledcap.service
 # cp ledcap.service /etc/systemd/system/ledcap.service
+# sudo systemctl enable ledcap.service
+# sudo systemctl start ledcap.service
 
 [Unit]
 Description=LED Cap control program
