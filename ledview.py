@@ -41,7 +41,6 @@ class LedView(View):
                 self.internal_draw(strip)
                 strip.show()
         except KeyboardInterrupt:
-            strip.clear(0)
-        for x in range(self.count):
-            strip.setPixelColor(x, 0)
-        strip.show()
+            for x in range(self.count):
+                strip.setPixelColor(x, 0)
+            strip.show()
