@@ -8,7 +8,7 @@ from view import View
 import time
 import rpi_ws281x as ws
 
-brightness = 5
+brightness = 15
 # TODO LED Strip init code
 
 class LedView(View):
@@ -17,7 +17,7 @@ class LedView(View):
         self.count = self.dimensions[0] * self.dimensions[1]
 
     def coord_to_strip_index(self, x: int, y: int) -> int:
-        if x % 2 == 0:
+        if y % 2 == 0:
             return x + self.dimensions[0] * y
         return (self.dimensions[1] - x) + self.dimensions[0] * y
 
