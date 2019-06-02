@@ -6,14 +6,13 @@ Draws to the LEDS
 
 from view import View
 import time
-import neopixel
-import board
+import rpi_ws281x as ws
 
-brightness = 0.2
+brightness = 5
 # TODO LED Strip init code
 
 class LedView(View):
-    def __init__(self, colors: list, dimensions: tuple, update):
+    def __init__(self, next_patternself, colors: list, dimensions: tuple, update):
         super().__init__(colors, dimensions, update)
         self.count = self.dimensions[0] * self.dimensions[1]
 
@@ -32,8 +31,7 @@ class LedView(View):
         """
         Draw the leds in a loop, blocks
         """
-        
-        with neopixel.NeoPixel(board.D18, self.count, bpp=3, auto_write=False, brightness=brightness, pixel_order=neopixel.GRB) as strip:
+        with ws.Adafruit_NeoPixel(self.count, 18, 800000, 10, False, brightness) as strip:
             while True:
                 self.update()
                 self.internal_draw(strip)
