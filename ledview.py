@@ -17,15 +17,17 @@ class LedView(View):
         self.count = self.dimensions[0] * self.dimensions[1]
 
     def coord_to_strip_index(self, x: int, y: int) -> int:
-        if y % 2 == 0:
-            return x + self.dimensions[0] * y
-        return (self.dimensions[1] - 1 - x) + (self.dimensions[0] * y)
+        x = self.dimensions[0] - 1 - x
+        y = self.dimensions[1] - 1 - y
+        if x % 2 == 0:
+            return y + (self.dimensions[1] * x)
+        return (self.dimensions[1] - 1 - y) + (self.dimensions[0] * x)
 
     def internal_draw(self, strip):
         for x in range(self.dimensions[0]):
             for y in range(self.dimensions[1]):
                 index = self.coord_to_strip_index(x, y)
-                strip.setPixelColor(index, self.colors[:x][:y])
+                strip.setPixelColor(index, self.colors[x][y])
 
     def draw(self):
         """
