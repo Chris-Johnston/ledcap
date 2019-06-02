@@ -9,7 +9,7 @@ import time
 import rpi_ws281x as ws
 
 brightness = 15
-# TODO LED Strip init code
+update_rate = 1000.0 / 50.0
 
 class LedView(View):
     def __init__(self, colors: list, dimensions: tuple, update):
@@ -40,6 +40,7 @@ class LedView(View):
                 self.update()
                 self.internal_draw(strip)
                 strip.show()
+                time.sleep(int(update_rate))
         except KeyboardInterrupt:
             for x in range(self.count):
                 strip.setPixelColor(x, 0)
