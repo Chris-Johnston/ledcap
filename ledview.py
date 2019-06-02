@@ -35,7 +35,13 @@ class LedView(View):
         """
         strip = ws.Adafruit_NeoPixel(self.count, 18, 800000, 10, False, brightness)
         strip.begin()
-        while True:
-            self.update()
-            self.internal_draw(strip)
-            strip.show()
+        try:
+            while True:
+                self.update()
+                self.internal_draw(strip)
+                strip.show()
+        except KeyboardInterrupt:
+            strip.clear(0)
+        for x in range(self.count):
+            strip.setPixelColor(x, 0)
+        strip.show()
