@@ -17,6 +17,7 @@ class UWPattern(Pattern):
         super().__init__(colors, dimensions)
         self.load_gif(image)
         self.chase_index = 0
+        self.rgb = self.image.convert('RGBA')
 
     def load_gif(self, path):
         self.image = Image.open(path)
@@ -37,11 +38,10 @@ class UWPattern(Pattern):
             count += 1
     
     def update(self):
-        rgb = self.image.convert('RGBA')
         for idx, _ in self:
             x, y = self.index_to_coords(idx)
             coord = (y, x)
-            r, g, b, a = rgb.getpixel(coord)
+            r, g, b, a = self.rgb.getpixel(coord)
             r *= a / 255.0
             g *= a / 255.0
             b *= a / 255.0
