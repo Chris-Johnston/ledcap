@@ -12,7 +12,7 @@ brightness = 5
 # TODO LED Strip init code
 
 class LedView(View):
-    def __init__(self, next_patternself, colors: list, dimensions: tuple, update):
+    def __init__(self, colors: list, dimensions: tuple, update):
         super().__init__(colors, dimensions, update)
         self.count = self.dimensions[0] * self.dimensions[1]
 
