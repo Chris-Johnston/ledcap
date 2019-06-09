@@ -17,7 +17,16 @@ class UWPattern(Pattern):
         super().__init__(colors, dimensions)
         self.load_gif(image)
         self.chase_index = 0
+        self.image_data = [0] * (self.dimensions[0] * self.dimensions[1])
         self.rgb = self.image.convert('RGBA')
+
+        for idx, _ in self:
+            y, x = self.index_to_coords(idx)
+            r, g, b, a = self.rgb.getpixel((x, y))
+            r *= a / 255.0
+            g *= a / 255.0
+            b *= a / 255.0
+            self.image_data[idx] = int(0xffffff) & (int(r) << 16 | int(g) << 8 | int(b))
 
     def load_gif(self, path):
         self.image = Image.open(path)
@@ -39,13 +48,7 @@ class UWPattern(Pattern):
     
     def update(self):
         for idx, _ in self:
-            x, y = self.index_to_coords(idx)
-            coord = (y, x)
-            r, g, b, a = self.rgb.getpixel(coord)
-            r *= a / 255.0
-            g *= a / 255.0
-            b *= a / 255.0
-            self[idx] = int(0xffffff) & (int(r) << 16 | int(g) << 8 | int(b))
+            self[idx] = self.image_data[idx]
         # add a 'chasing' thing around the corner
         for x, y, count in self.get_edge_coordinates():
             # print('edge: ', x, y, count)
