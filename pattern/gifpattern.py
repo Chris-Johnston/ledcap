@@ -9,7 +9,7 @@ import random
 from PIL import Image
 import time
 
-gifs = ['gif/loading.gif', 'gif/bear.gif', 'gif/question2.gif', 'gif/question_crop.gif']
+gifs = ['gif/question2.gif', 'gif/question_crop.gif']
 CHANGE_TIME = 5 # seconds
 
 class GifPattern(Pattern):
