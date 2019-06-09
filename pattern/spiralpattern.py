@@ -26,7 +26,7 @@ class SpiralPattern(Pattern):
             y -= 7
             rad = math.sqrt(x * x + y * y)
             angle = 0.0
-            if x != 0 and y != 0:
+            if x != 0:
                 angle = math.degrees(math.atan(y / x))
             if rad == 0.0:
                 continue
