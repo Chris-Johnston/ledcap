@@ -2,6 +2,10 @@
 
 An animated RGB LED graduation cap, running on a Raspberry Pi.
 
+## Why?
+
+I like LEDs.
+
 ## Images
 
 The assembled graduation cap is a 14x14 LED matrix
@@ -55,3 +59,33 @@ a lot faster.
 
 [Internet-Xmas-Tree]: https://github.com/Chris-Johnston/Internet-Xmas-Tree
 [PatioLightsHost]: https://github.com/Chris-Johnston/PatioLightsHost
+
+### Running the Simulator
+
+1. Install the project dependencies:
+
+    ```py
+    python3 -m pip install -r requirements.txt
+    ```
+
+2. Start the simulator:
+
+    ```py
+    python3 simulator.py
+    ```
+
+3. Navigate through the patterns using `A` and `D`.
+
+### Adding Patterns
+
+Each pattern is in its own module, under `pattern/`.
+These patterns are loaded by `patternmanager`. When new
+patterns are added, they need to be added to the list of
+all patterns in the `patternmanager`.
+Each pattern must be a sub-class of `Pattern`.
+
+## Driving the LEDs
+
+The LEDs are driven by `led.py`, which runs as a background
+service that starts when the Raspberry Pi boots.
+The script has to be run as root for access to the GPIO.
