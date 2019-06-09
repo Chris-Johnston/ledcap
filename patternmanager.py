@@ -19,7 +19,9 @@ patterns = [
     'pattern.clockpattern',
     'pattern.offpattern',
     'pattern.hackerpattern',
-    'pattern.dvdpattern'
+    'pattern.dvdpattern',
+    'pattern.loadingpattern',
+    'pattern.ripplepattern'
 ]
 
 class PatternManager():
@@ -28,7 +30,7 @@ class PatternManager():
     """
 
     def __init__(self, colors, dimensions):
-        self.handler_index = 11
+        self.handler_index = 14
         self.handlers = []
         # load all of the patterns
         for p in patterns:
