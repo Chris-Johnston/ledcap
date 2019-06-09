@@ -45,3 +45,4 @@ class LedView(View):
             for x in range(self.count):
                 strip.setPixelColor(x, 0)
             strip.show()
+            time.sleep(1.0 / 60.0)
