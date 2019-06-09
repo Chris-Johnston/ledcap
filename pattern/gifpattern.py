@@ -15,7 +15,7 @@ CHANGE_TIME = 5 # seconds
 class GifPattern(Pattern):
     def __init__(self, colors: list, dimensions: tuple):
         super().__init__(colors, dimensions)
-        self.gif_num = 2
+        self.gif_num = 0
         self.load_gif(gifs[self.gif_num])
         self.frame = 0
         self.change_time = time.time()
