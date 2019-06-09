@@ -30,7 +30,7 @@ class PatternManager():
     """
 
     def __init__(self, colors, dimensions):
-        self.handler_index = 14
+        self.handler_index = 1
         self.handlers = []
         # load all of the patterns
         for p in patterns:

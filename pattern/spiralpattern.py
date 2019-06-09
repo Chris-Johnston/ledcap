@@ -35,8 +35,8 @@ class SpiralPattern(Pattern):
             l = -30.0
             mod = (angle + b * self.direction * time.time() - l * math.log(rad)) % a
             if mod < b:
-                r = int(0xff * 1.4 * (rad / self.dimensions[0]))
-                color = 0x0066ff | r << 16
+                r = 0xff & int(0xff * 1.4 * (rad / self.dimensions[0]))
+                color = 0x330033 | r << 16 | r << 0
                 color &= 0xffffff
                 self[idx] = color
             else:
