@@ -39,7 +39,7 @@ class LedController(Controller):
             self.pattern_manager.off()
 
     def on_callback(self, event):
-        if not self.holding:
+        if not self.holding and self.pattern_manager.is_off():
             self.pattern_manager.set_index(self.off_index)
 
     def hold_callback(self, event):

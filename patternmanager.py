@@ -43,6 +43,9 @@ class PatternManager():
                     instance = obj(colors, dimensions)
                     self.handlers.append(instance)
 
+    def is_off(self) -> bool:
+        return self.handler_index == OFF_PATTERN
+
     def off(self):
         self.handler_index = OFF_PATTERN
 
