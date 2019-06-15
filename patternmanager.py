@@ -24,6 +24,8 @@ patterns = [
     'pattern.offpattern'
 ]
 
+OFF_PATTERN = len(patterns) - 1
+
 class PatternManager():
     """
     Manages a bunch of the patterns and runs the update loop
@@ -40,6 +42,12 @@ class PatternManager():
                 if obj is not Pattern and isinstance(obj, type) and issubclass(obj, Pattern):
                     instance = obj(colors, dimensions)
                     self.handlers.append(instance)
+
+    def off(self):
+        self.handler_index = OFF_PATTERN
+
+    def set_index(self, index: int):
+        self.handler_index = index
 
     def next_pattern(self):
         self.handler_index = (self.handler_index + 1) % len(patterns)
