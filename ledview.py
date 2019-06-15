@@ -8,7 +8,7 @@ from view import View
 import time
 import rpi_ws281x as ws
 
-brightness = 35
+brightness = 25
 update_rate = 1.0 / 50.0
 
 class LedView(View):
