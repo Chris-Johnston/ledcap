@@ -8,9 +8,9 @@ import RPi.GPIO as GPIO
 BUTTON_NEXT = 21
 BUTTON_PREV = 12
 # dunno exactly what I'll use these extra buttons for
-BUTTON_HOLD = 23
+BUTTON_HOLD = 25
 BUTTON_OFF = 24
-BUTTON_ON = 25
+BUTTON_ON = 23
 
 BOUNCE_TIME = 200
 
