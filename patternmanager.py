@@ -7,21 +7,21 @@ import inspect
 from pattern.pattern import Pattern
 
 patterns = [
-    'pattern.testpattern',
+    # 'pattern.testpattern',
     'pattern.spiralpattern',
     'pattern.lifepattern',
     'pattern.phasespattern',
     'pattern.blinkypattern',
-    'pattern.gifpattern',
+    # 'pattern.gifpattern',
     'pattern.msftlogopattern',
     'pattern.uwpattern',
     'pattern.uwpinwheelpattern',
     'pattern.clockpattern',
-    'pattern.offpattern',
     'pattern.hackerpattern',
-    'pattern.dvdpattern',
+    # 'pattern.dvdpattern',
     'pattern.loadingpattern',
-    'pattern.ripplepattern'
+    'pattern.ripplepattern',
+    'pattern.offpattern'
 ]
 
 class PatternManager():
@@ -30,7 +30,7 @@ class PatternManager():
     """
 
     def __init__(self, colors, dimensions):
-        self.handler_index = 1
+        self.handler_index = 0
         self.handlers = []
         # load all of the patterns
         for p in patterns:

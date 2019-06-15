@@ -49,6 +49,7 @@ class UWPattern(Pattern):
     def update(self):
         for idx, _ in self:
             self[idx] = self.image_data[idx]
+            self[idx] = 0xffffff if random.randint(0, 100) > 99 else self[idx]
         # add a 'chasing' thing around the corner
         for x, y, count in self.get_edge_coordinates():
             # print('edge: ', x, y, count)
@@ -76,6 +77,6 @@ class UWPattern(Pattern):
             self[index] = 0xffffff & (int(r) << 16 | int(g) << 8 | int(b))
         self.chase_index += 1
 
-        # randomly add sparkles
-        for idx, val in self:
-            self[idx] = 0xffffff if random.randint(0, 100) > 99 else val
+        # # randomly add sparkles
+        # for idx, val in self:
+        #     self[idx] = 0xffffff if random.randint(0, 100) > 99 else val
