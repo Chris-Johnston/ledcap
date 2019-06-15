@@ -21,7 +21,7 @@ patterns = [
     # 'pattern.dvdpattern',
     'pattern.loadingpattern',
     'pattern.ripplepattern',
-    'pattern.offpattern'
+    'pattern.offpattern' # off must be the last pattern
 ]
 
 OFF_PATTERN = len(patterns) - 1
@@ -50,10 +50,10 @@ class PatternManager():
         self.handler_index = index
 
     def next_pattern(self):
-        self.handler_index = (self.handler_index + 1) % len(patterns)
+        self.handler_index = (self.handler_index + 1) % len(patterns - 1)
 
     def prev_pattern(self):
-        self.handler_index = (self.handler_index - 1) % len(patterns)
+        self.handler_index = (self.handler_index - 1) % len(patterns - 1)
 
     def update(self):
         self.handlers[self.handler_index].update()
