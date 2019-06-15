@@ -13,8 +13,8 @@ class BlinkyPattern(Pattern):
         super().__init__(colors, dimensions)
 
     def draw_rad(self, color, rad, radius):
-        x = math.sin(rad) * radius + (self.dimensions[0] / 2)
-        y = math.cos(rad) * radius + (self.dimensions[1] / 2)
+        x = math.sin(rad) * radius + (self.dimensions[0] / 2.0)
+        y = math.cos(rad) * radius + (self.dimensions[1] / 2.0)
         x, y = round(x), round(y)
         index = self.coords_to_index((x, y))
         self[index] = color

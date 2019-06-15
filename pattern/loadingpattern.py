@@ -15,8 +15,8 @@ class LoadingPattern(Pattern):
         for idx, _ in self:
             x, y = self.index_to_coords(idx)
             # center the coords
-            x -= 7
-            y -= 7
+            x -= 6.5
+            y -= 6.5
             radius = math.sqrt(x * x + y * y)
             offset = 5
             angle = (math.atan(y / (x + 0.00001)) + (time.time() * 1000.0 / 400.0)) % 3.14

@@ -15,8 +15,8 @@ class RipplePattern(Pattern):
         for idx, _ in self:
             x, y = self.index_to_coords(idx)
             # center the coords
-            x -= 7
-            y -= 7
+            x -= 6.5
+            y -= 6.5
             radius = math.sqrt(x * x + y * y)
             offset = time.time() * 1000.0 / 900.0
             size = 1.9
