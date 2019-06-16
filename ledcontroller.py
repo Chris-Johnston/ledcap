@@ -48,8 +48,9 @@ class LedController(Controller):
         while GPIO.input(BUTTON_HOLD) == GPIO.LOW:
             time.sleep(0.01)
         delta = time.time() - start
-        if delta > 5:
+        if delta > 4:
             self.holding = not self.holding
+            print('holding: ', self.holding)
 
     def prev_callback(self, event):
         if not self.holding:
