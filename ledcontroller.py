@@ -43,6 +43,7 @@ class LedController(Controller):
             self.pattern_manager.set_index(self.off_index)
 
     def hold_callback(self, event):
+        print(GPIO.input(BUTTON_HOLD))
         self.holding = not self.holding
 
     def prev_callback(self, event):
