@@ -31,7 +31,7 @@ class LedController(Controller):
         GPIO.add_event_detect(BUTTON_PREV, GPIO.FALLING, callback=self.prev_callback, bouncetime=BOUNCE_TIME)
         GPIO.add_event_detect(BUTTON_ON, GPIO.FALLING, callback=self.on_callback, bouncetime=BOUNCE_TIME)
         GPIO.add_event_detect(BUTTON_OFF, GPIO.FALLING, callback=self.off_callback, bouncetime=BOUNCE_TIME)
-        GPIO.add_event_detect(BUTTON_HOLD, GPIO.FALLING, callback=self.hold_callback, bouncetime=BOUNCE_TIME)
+        GPIO.add_event_detect(BUTTON_HOLD, GPIO.FALLING, callback=self.hold_callback, bouncetime=5000)
 
     def off_callback(self, event):
         if not self.holding and not self.pattern_manager.is_off():
