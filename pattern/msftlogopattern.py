@@ -3,6 +3,7 @@ MSFT Logo Pattern
 """
 
 from pattern.pattern import Pattern
+import time
 
 r = 0xf25022
 g = 0x7fba00
@@ -22,3 +23,4 @@ class MSFTLogoPattern(Pattern):
         for idx, _ in self:
             x, y = self.index_to_coords(idx)
             self[idx] = logo[x // 7][y // 7]
+        time.sleep(1/10.0)
