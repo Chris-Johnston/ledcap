@@ -49,3 +49,4 @@ class OnlyUWPattern(Pattern):
     def update(self):
         for idx, _ in self:
             self[idx] = self.image_data[idx]
+        time.sleep(1/10.0)
