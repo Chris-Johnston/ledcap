@@ -4,6 +4,7 @@ Led Controller
 
 from controller import Controller
 import RPi.GPIO as GPIO
+import time
 
 BUTTON_NEXT = 21
 BUTTON_PREV = 12
@@ -43,8 +44,12 @@ class LedController(Controller):
             self.pattern_manager.set_index(self.off_index)
 
     def hold_callback(self, event):
-        print(GPIO.input(BUTTON_HOLD))
-        self.holding = not self.holding
+        start = time.time()
+        while GPIO.input(BUTTON_HOLD) == GPIO.LOW:
+            time.sleep(0.01)
+        delta = time.time() - start
+        if delta > 5:
+            self.holding = not self.holding
 
     def prev_callback(self, event):
         if not self.holding:
