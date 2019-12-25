@@ -8,6 +8,7 @@ from pattern.pattern import Pattern
 
 patterns = [
     'pattern.sinepattern',
+    'pattern.scrollpattern',
     # 'pattern.testpattern',
     # 'pattern.spiralpattern',
     # 'pattern.lifepattern',
@@ -18,11 +19,11 @@ patterns = [
     # 'pattern.onlyuwpattern',
     # 'pattern.uwpattern',
     'pattern.uwpinwheelpattern',
-    'pattern.clockpattern',
-    'pattern.hackerpattern',
+    # 'pattern.clockpattern',
+    # 'pattern.hackerpattern',
     # 'pattern.dvdpattern',
-    'pattern.loadingpattern',
-    'pattern.ripplepattern',
+    # 'pattern.loadingpattern',
+    # 'pattern.ripplepattern',
     'pattern.offpattern' # off must be the last pattern
 ]
 
