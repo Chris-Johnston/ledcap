@@ -9,7 +9,7 @@ import time
 import rpi_ws281x as ws
 
 brightness = 100
-update_rate = 1.0 / 90.0
+update_rate = 1.0 / 60.0
 
 class TreeLedView(View):
     def __init__(self, colors: list, dimensions: tuple, update):
