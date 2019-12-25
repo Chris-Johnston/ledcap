@@ -20,3 +20,4 @@ class BlinkyPattern(Pattern):
             self.last_time = time.time()
         for idx, _ in self:
             self[idx] = 0xff00ff if idx == self.offset else 0
+            self[idx] = 0xff0000 if idx - 1 == self.offset else self[idx]
