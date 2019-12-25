@@ -17,7 +17,7 @@ class TreeLedView(View):
         self.count = self.dimensions[0] * self.dimensions[1]
 
     def coord_to_strip_index(self, x: int, y: int) -> int:
-        return self.dimensions[1] * x + y
+        return self.dimensions[0] * x + y
 
     def internal_draw(self, strip):
         for x in range(self.dimensions[0]):
@@ -41,4 +41,4 @@ class TreeLedView(View):
             for x in range(self.count):
                 strip.setPixelColor(x, 0)
             strip.show()
-            time.sleep(1.0 / 50.0)
+            time.sleep(update_rate)
