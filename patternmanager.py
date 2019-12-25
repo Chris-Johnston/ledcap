@@ -7,15 +7,16 @@ import inspect
 from pattern.pattern import Pattern
 
 patterns = [
+    'pattern.sinepattern',
     # 'pattern.testpattern',
-    'pattern.spiralpattern',
-    'pattern.lifepattern',
-    'pattern.phasespattern',
+    # 'pattern.spiralpattern',
+    # 'pattern.lifepattern',
+    # 'pattern.phasespattern',
     'pattern.blinkypattern',
     # 'pattern.gifpattern',
-    'pattern.msftlogopattern',
-    'pattern.onlyuwpattern',
-    'pattern.uwpattern',
+    # 'pattern.msftlogopattern',
+    # 'pattern.onlyuwpattern',
+    # 'pattern.uwpattern',
     'pattern.uwpinwheelpattern',
     'pattern.clockpattern',
     'pattern.hackerpattern',

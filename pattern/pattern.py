@@ -17,7 +17,7 @@ class Pattern(ABC):
         return len(self.colors) * coords[1] + coords[0]
 
     def index_to_coords(self, index: int) -> tuple:
-        return (int(index / len(self.colors)), index % len(self.colors))
+        return (int(index / len(self.colors[0])), index % len(self.colors[0]))
 
     def __max_index__(self):
         return self.dimensions[0] * self.dimensions[1]
