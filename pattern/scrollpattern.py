@@ -11,7 +11,7 @@ class BlinkyPattern(Pattern):
         super().__init__(colors, dimensions)
         self.offset = 0
         self.last_time = time.time()
-        self.time_delay = 0.5
+        self.time_delay = 0.1
 
     def update(self):
         if time.time() > self.last_time + self.time_delay:
@@ -20,4 +20,3 @@ class BlinkyPattern(Pattern):
             self.last_time = time.time()
         for idx, _ in self:
             self[idx] = 0xff00ff if idx == self.offset else 0
-            self[idx] = 0xff0000 if idx - 1 == self.offset else self[idx]

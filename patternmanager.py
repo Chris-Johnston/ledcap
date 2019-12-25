@@ -7,6 +7,7 @@ import inspect
 from pattern.pattern import Pattern
 
 patterns = [
+    'pattern.wipeuppattern',
     'pattern.sinepattern',
     'pattern.scrollpattern',
     # 'pattern.testpattern',
