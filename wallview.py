@@ -17,12 +17,12 @@ class WallView(View):
         self.count = self.dimensions[0] * self.dimensions[1]
 
     def coord_to_strip_index(self, x: int, y: int) -> int:
-        x = 6 - x
+        # x = 6 - x
         # ignore the first 3 leds
         # and the y will zig-zag
         if x % 2 == 1:
             y = 16 - y
-        return 3 + x * 16 + y
+        return x * 16 + y
 
     def internal_draw(self, strip):
         for x in range(self.dimensions[0]):
