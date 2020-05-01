@@ -119,8 +119,6 @@ def main():
             new.append(0xff00ff)
         colors.append(new)
 
-    print(colors)
-
     pm = ObservingFilePatternManager(colors, LED_DIMENSIONS, STATE_FILE)
     lv = SingleStripView(colors, LED_DIMENSIONS, pm.update)
     lc = SingleStripController(pm)
