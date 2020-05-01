@@ -107,8 +107,10 @@ class ModifiedHandler(FileSystemEventHandler):
         self.pm = pm
 
     def on_modified(self, event):
+        print(json.dumps(event))
         if not isinstance(event, FileModifiedEvent):
             return
+        print(event.src_path)
         if self.pm.filename not in event.src_path:
             return
         pm.read_file()
