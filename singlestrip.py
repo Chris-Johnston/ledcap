@@ -83,8 +83,8 @@ class SingleStripView(View):
         self.count = self.dimensions[0] * self.dimensions[1]
 
     def coord_to_strip_index(self, x: int, y: int) -> int:
-        # ignore Y
-        return x % self.dimensions[0]
+        # assume that the unused dimension will always be 0
+        return x % self.dimensions[0] + y % self.dimensions[1]
 
     def internal_draw(self, strip):
         for x in range(self.dimensions[0]):
