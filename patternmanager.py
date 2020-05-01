@@ -114,7 +114,7 @@ class ModifiedHandler(FileSystemEventHandler):
 class ObservingFilePatternManager(FileBasedPatternManager):
     def __init__(self, colors, dimensions, filename):
         super().__init__(colors, dimensions, filename)
-        self.handler = ModifiedHandler()
+        self.handler = ModifiedHandler(self)
         self.observer = Observer()
         self.observer.schedule(self.handler, self.filename, recursive=False)
         self.observer.start()
