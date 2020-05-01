@@ -15,7 +15,7 @@ import time
 from view import View
 import rpi_ws281x as ws
 
-LED_DIMENSIONS = (100, 1)
+LED_DIMENSIONS = (1, 100)
 
 BUTTON_NEXT = 21
 BUTTON_PREV = 12
@@ -118,6 +118,8 @@ def main():
         for col in range(LED_DIMENSIONS[1]):
             new.append(0xff00ff)
         colors.append(new)
+
+    print(colors)
 
     pm = FileBasedPatternManager(colors, LED_DIMENSIONS, STATE_FILE)
     lv = SingleStripView(colors, LED_DIMENSIONS, pm.update)
