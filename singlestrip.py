@@ -9,7 +9,7 @@ Led Controller
 """
 
 from controller import Controller
-from patternmanager import FileBasedPatternManager
+from patternmanager import ObservingFilePatternManager
 import RPi.GPIO as GPIO
 import time
 from view import View
@@ -121,7 +121,7 @@ def main():
 
     print(colors)
 
-    pm = FileBasedPatternManager(colors, LED_DIMENSIONS, STATE_FILE)
+    pm = ObservingFilePatternManager(colors, LED_DIMENSIONS, STATE_FILE)
     lv = SingleStripView(colors, LED_DIMENSIONS, pm.update)
     lc = SingleStripController(pm)
     lv.draw()

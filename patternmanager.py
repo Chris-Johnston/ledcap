@@ -7,6 +7,8 @@ import inspect
 from pattern.pattern import Pattern
 import os.path
 import json
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler, FileModifiedEvent
 
 RESERVED_PATTERNS = [
     'pattern.offpattern',
@@ -38,7 +40,7 @@ class PatternManager():
     def __init__(self, colors, dimensions):
         self.handler_index = 1
         self.handlers = []
-        self.patterns = USER_PATTERNS + RESERVED_PATTERNS
+        self.patterns = RESERVED_PATTERNS + USER_PATTERNS
         self.setup_handlers(colors, dimensions)
 
     def setup_handlers(self, colors, dimensions):
@@ -99,3 +101,20 @@ class FileBasedPatternManager(PatternManager):
             }
             state_json = json.dumps(payload)
             state_file.write(state_json)
+
+class ModifiedHandler(FileSystemEventHandler):
+    def __init__(self, pm):
+        self.pm = pm
+
+    def on_modified(self, event):
+        if not isinstance(event, FileModifiedEvent):
+            return
+        pm.read_file()
+
+class ObservingFilePatternManager(FileBasedPatternManager):
+    def __init__(self, colors, dimensions, filename):
+        super().__init__(colors, dimensions, filename)
+        self.handler = ModifiedHandler()
+        self.observer = Observer()
+        self.observer.schedule(self.handler, self.filename, recursive=False)
+        self.observer.start()
