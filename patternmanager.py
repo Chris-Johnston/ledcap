@@ -126,4 +126,4 @@ class ObservingFilePatternManager(FileBasedPatternManager):
 
     def update(self):
         super().update()
-        self.observer.join()
+        self.observer.join(1)
