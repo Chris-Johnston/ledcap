@@ -30,15 +30,13 @@ USER_PATTERNS = [
     'pattern.ripplepattern',
 ]
 
-OFF_PATTERN = len(PATTERNS) - 1
-
 class PatternManager():
     """
     Manages a bunch of the patterns and runs the update loop
     """
 
     def __init__(self, colors, dimensions):
-        self.handler_index = 0
+        self.handler_index = 1
         self.handlers = []
         self.patterns = USER_PATTERNS + RESERVED_PATTERNS
         self.setup_handlers(colors, dimensions)
@@ -55,10 +53,10 @@ class PatternManager():
                     self.handlers.append(instance)
 
     def is_off(self) -> bool:
-        return self.handler_index == OFF_PATTERN
+        return self.handler_index == 0
 
     def off(self):
-        self.handler_index = OFF_PATTERN
+        self.handler_index = 0
 
     def set_index(self, index: int):
         # fail silently
@@ -88,7 +86,7 @@ class FileBasedPatternManager(PatternManager):
     def read_file(self):
         with open(self.filename, 'r') as state_file:
             state_json = json.loads(state_file.read())
-            self.patterns = state_json["patterns"] + RESERVED_PATTERNS
+            self.patterns = RESERVED_PATTERNS + state_json["patterns"] 
             self.handler_index = state_json["selected"]
             # TODO: could consider adding additional state per patterns, like color values
 
