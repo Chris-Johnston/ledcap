@@ -73,7 +73,7 @@ class PatternManager():
 
 class FileBasedPatternManager(PatternManager):
     def __init__(self, colors, dimensions, filename):
-        super(colors, dimensions)
+        super().__init__(colors, dimensions)
         self.filename = filename
 
     def setup_file(self):
