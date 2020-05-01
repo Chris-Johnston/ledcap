@@ -15,7 +15,7 @@ RESERVED_PATTERNS = [
 USER_PATTERNS = [
     # 'pattern.testpattern',
     'pattern.spiralpattern',
-    'pattern.lifepattern',
+    # 'pattern.lifepattern',
     'pattern.phasespattern',
     'pattern.blinkypattern',
     # 'pattern.gifpattern',
