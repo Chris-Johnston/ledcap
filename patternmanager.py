@@ -124,7 +124,7 @@ class ObservingFilePatternManager(FileBasedPatternManager):
         self.observer.schedule(self.handler, '.', recursive=False)
         self.observer.start()
 
-    def update():
-        super().update(self)
+    def update(self):
+        super().update()
         if self.observer.isAlive():
             self.observer.join(0.1)
