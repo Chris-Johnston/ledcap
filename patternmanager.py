@@ -5,8 +5,14 @@ Pattern Manager
 import importlib
 import inspect
 from pattern.pattern import Pattern
+import os.path
+import json
 
-patterns = [
+RESERVED_PATTERNS = [
+    'pattern.offpattern',
+]
+
+USER_PATTERNS = [
     # 'pattern.testpattern',
     'pattern.spiralpattern',
     'pattern.lifepattern',
@@ -22,10 +28,9 @@ patterns = [
     # 'pattern.dvdpattern',
     'pattern.loadingpattern',
     'pattern.ripplepattern',
-    'pattern.offpattern' # off must be the last pattern
 ]
 
-OFF_PATTERN = len(patterns) - 1
+OFF_PATTERN = len(PATTERNS) - 1
 
 class PatternManager():
     """
@@ -35,8 +40,13 @@ class PatternManager():
     def __init__(self, colors, dimensions):
         self.handler_index = 0
         self.handlers = []
-        # load all of the patterns
-        for p in patterns:
+        self.patterns = USER_PATTERNS + RESERVED_PATTERNS
+        self.setup_handlers(colors, dimensions)
+
+    def setup_handlers(self, colors, dimensions):
+        self.handlers = []
+        # load all of the PATTERNS
+        for p in self.patterns:
             mod = importlib.import_module(p)
             # get pattern subclasses of module
             for name, obj in inspect.getmembers(mod):
@@ -51,13 +61,43 @@ class PatternManager():
         self.handler_index = OFF_PATTERN
 
     def set_index(self, index: int):
-        self.handler_index = index
+        # fail silently
+        self.handler_index = index % len(self.patterns)
 
     def next_pattern(self):
-        self.handler_index = (self.handler_index + 1) % (len(patterns) - 1)
+        self.handler_index = (self.handler_index + 1) % (len(self.patterns) - 1)
 
     def prev_pattern(self):
-        self.handler_index = (self.handler_index - 1) % (len(patterns) - 1)
+        self.handler_index = (self.handler_index - 1) % (len(self.patterns) - 1)
 
     def update(self):
         self.handlers[self.handler_index].update()
+
+class FileBasedPatternManager(PatternManager):
+    def __init__(self, colors, dimensions, filename):
+        super(colors, dimensions)
+        self.filename = filename
+
+    def setup_file(self):
+        if os.path.exists(self.filename):
+            self.read_file()
+        else:
+            # use defaults from super init
+            pass
+
+    def read_file(self):
+        with open(self.filename, 'r') as state_file:
+            state_json = json.loads(state_file.read())
+            self.patterns = state_json["patterns"] + RESERVED_PATTERNS
+            self.handler_index = state_json["selected"]
+            # TODO: could consider adding additional state per patterns, like color values
+
+    def write_file(self):
+        with open(self.filename, 'w') as state_file:
+            payload = {
+                "selected": self.handler_index,
+                "patterns": self.patterns,
+            }
+            
+            state_json = json.dumps(payload)
+            state_file.write()

@@ -9,7 +9,7 @@ Led Controller
 """
 
 from controller import Controller
-from patternmanager import PatternManager
+from patternmanager import FileBasedPatternManager
 import RPi.GPIO as GPIO
 import time
 from view import View
@@ -26,6 +26,11 @@ BUTTON_ON = 23
 BOUNCE_TIME = 200
 BRIGHTNESS = 250 # power supply goes brrrrr
 UPDATE_RATE = 1.0 / 100.0
+
+# watching this file to get settings for the pattern manager
+# on each update, update this file
+# when this file changes, update the pattern manager
+STATE_FILE = "settings.json"
 
 class SingleStripController(Controller):
     def __init__(self, pm):
@@ -114,7 +119,7 @@ def main():
             new.append(0xff00ff)
         colors.append(new)
 
-    pm = PatternManager(colors, LED_DIMENSIONS)
+    pm = FileBasedPatternManager(colors, LED_DIMENSIONS, STATE_FILE)
     lv = SingleStripView(colors, LED_DIMENSIONS, pm.update)
     lc = SingleStripController(pm)
     lv.draw()
