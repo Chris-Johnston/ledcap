@@ -32,7 +32,7 @@ class Pattern(ABC):
     def __getitem__(self, key):
         assert 0 <= key < self.__max_index__()
         coords = self.index_to_coords(key)
-        print(f"index {key} [{coords[0]}, {coords[1]}]")
+        print("index and coords:", key, coords)
         return self.colors[coords[0]][coords[1]]
 
     def __setitem__(self, key, value):
