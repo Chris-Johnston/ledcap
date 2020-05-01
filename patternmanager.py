@@ -125,6 +125,6 @@ class ObservingFilePatternManager(FileBasedPatternManager):
         self.observer.start()
 
     def update():
-        super().update()
+        super().update(self)
         if self.observer.isAlive():
             self.observer.join(0.1)
