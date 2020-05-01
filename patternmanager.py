@@ -81,7 +81,7 @@ class FileBasedPatternManager(PatternManager):
             self.read_file()
         else:
             # use defaults from super init
-            pass
+            write_file()
 
     def read_file(self):
         with open(self.filename, 'r') as state_file:
