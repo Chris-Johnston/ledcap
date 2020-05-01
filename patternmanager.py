@@ -96,6 +96,5 @@ class FileBasedPatternManager(PatternManager):
                 "selected": self.handler_index,
                 "patterns": self.patterns,
             }
-            
             state_json = json.dumps(payload)
-            state_file.write()
+            state_file.write(state_json)
