@@ -109,6 +109,8 @@ class ModifiedHandler(FileSystemEventHandler):
     def on_modified(self, event):
         if not isinstance(event, FileModifiedEvent):
             return
+        if self.pm.filename not in event.src_path:
+            return
         pm.read_file()
 
 class ObservingFilePatternManager(FileBasedPatternManager):
@@ -116,5 +118,6 @@ class ObservingFilePatternManager(FileBasedPatternManager):
         super().__init__(colors, dimensions, filename)
         self.handler = ModifiedHandler(self)
         self.observer = Observer()
-        self.observer.schedule(self.handler, self.filename, recursive=False)
+        # hack: observer only works with dirs and not individual files, lame.
+        self.observer.schedule(self.handler, '.', recursive=False)
         self.observer.start()
