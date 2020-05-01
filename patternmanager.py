@@ -123,3 +123,8 @@ class ObservingFilePatternManager(FileBasedPatternManager):
         # hack: observer only works with dirs and not individual files, lame.
         self.observer.schedule(self.handler, '.', recursive=False)
         self.observer.start()
+
+    def update():
+        super().update()
+        if self.observer.isAlive():
+            self.observer.join(0.1)
