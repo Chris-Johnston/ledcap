@@ -79,6 +79,8 @@ class FileBasedPatternManager(PatternManager):
         super().__init__(colors, dimensions)
         self.filename = filename
         self.setup_file()
+        self.colors = colors
+        self.dimensions = dimensions
 
     def setup_file(self):
         if os.path.exists(self.filename):
@@ -93,6 +95,7 @@ class FileBasedPatternManager(PatternManager):
             self.patterns = RESERVED_PATTERNS + state_json["patterns"] 
             self.handler_index = state_json["selected"]
             # TODO: could consider adding additional state per patterns, like color values
+            self.setup_handlers(self.colors, self.dimensions)
 
     def write_file(self):
         with open(self.filename, 'w') as state_file:
