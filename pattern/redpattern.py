@@ -20,7 +20,7 @@ class RedPattern(Pattern):
                 size = 5.0
                 offset = time.time() * 1000.0 / 555.0
 
-                gb = int(0x55 * math.cos((coords[1] - (7.0 * offset)) / (size * 3.0)))
+                gb = int(0x55 * math.cos((coords[1] - (7.0 * offset)) / (size * 0.3)))
                 if gb < 0:
                     gb = 0
 
