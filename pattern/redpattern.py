@@ -13,7 +13,7 @@ class RedPattern(Pattern):
 
     def update(self):
         for idx, val in self:
-            if random.randint(0, 50) == 1:
+            if random.randint(0, 100) == 1:
                 self[idx] = 0xff7777
             else:
                 coords = self.index_to_coords(idx)
