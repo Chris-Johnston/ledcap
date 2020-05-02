@@ -114,3 +114,18 @@ class ObservingFilePatternManager(FileBasedPatternManager):
         # this is a hack
         if self.ticks % 100 == 0:
             self.read_file()
+
+    def off(self):
+        self.handler_index = 0
+
+    def set_index(self, index: int):
+        super().set_index(index)
+        self.write_file()
+
+    def next_pattern(self):
+        super().next_pattern()
+        self.write_file()
+
+    def prev_pattern(self):
+        super().prev_pattern()
+        self.write_file()
