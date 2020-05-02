@@ -5,6 +5,7 @@ Red pattern
 from pattern.pattern import Pattern
 import time
 import random
+import math
 
 class RedPattern(Pattern):
     def __init__(self, colors: list, dimensions: tuple):
@@ -12,7 +13,7 @@ class RedPattern(Pattern):
 
     def update(self):
         for idx, val in self:
-            if random.randint(0, 90) == 0:
+            if random.randint(0, 90) == 1:
                 self[idx] = 0xff0000
             else:
                 r = int(0xff * math.cos((offset) / size))
