@@ -16,6 +16,7 @@ class RedPattern(Pattern):
             if random.randint(0, 90) == 1:
                 self[idx] = 0xff0000
             else:
+                offset = time.time() * 1000.0 / 555.0
                 r = int(0xff * math.cos((offset) / size))
                 if r < 0:
                     r = 0
