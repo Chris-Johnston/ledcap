@@ -17,8 +17,11 @@ class HackScrollerPattern(Pattern):
         for idx, val in self:
             if idx == (self.tick % self.__max_index__()):
                 self[idx] = 0xffffff
-            if (self.tick - 5 % self.__max_index__()) < idx < (self.tick % self.__max_index__()):
+            elif (self.tick - 5 % self.__max_index__()) < idx < (self.tick % self.__max_index__()):
                 self[idx] = 0x00ff00
+            else:
+                self[idx] = 0
+
 
 
             
