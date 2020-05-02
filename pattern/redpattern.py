@@ -25,6 +25,7 @@ class RedPattern(Pattern):
                     gb = 0
 
                 r = 127 + int(127 * math.cos((coords[1] - offset) / size))
+                r |= gb
                 if r < 0:
                     r = 0
                 self[idx] = r << 16 | gb << 8 | gb
