@@ -78,9 +78,9 @@ class FileBasedPatternManager(PatternManager):
     def __init__(self, colors, dimensions, filename):
         super().__init__(colors, dimensions)
         self.filename = filename
-        self.setup_file()
         self.colors = colors
         self.dimensions = dimensions
+        self.setup_file()
 
     def setup_file(self):
         if os.path.exists(self.filename):
