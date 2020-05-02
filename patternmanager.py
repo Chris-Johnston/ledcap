@@ -103,28 +103,14 @@ class FileBasedPatternManager(PatternManager):
             state_json = json.dumps(payload)
             state_file.write(state_json)
 
-class ModifiedHandler(FileSystemEventHandler):
-    def __init__(self, pm):
-        self.pm = pm
-
-    def on_modified(self, event):
-        print(json.dumps(event))
-        if not isinstance(event, FileModifiedEvent):
-            return
-        print(event.src_path)
-        if self.pm.filename not in event.src_path:
-            return
-        pm.read_file()
-
 class ObservingFilePatternManager(FileBasedPatternManager):
     def __init__(self, colors, dimensions, filename):
         super().__init__(colors, dimensions, filename)
-        self.handler = ModifiedHandler(self)
-        self.observer = Observer()
-        # hack: observer only works with dirs and not individual files, lame.
-        self.observer.schedule(self.handler, '.', recursive=False)
-        self.observer.start()
+        self.ticks = 0
 
     def update(self):
         super().update()
-        self.observer.join(1)
+        self.ticks += 1
+        # this is a hack
+        if self.ticks % 1000 == 0:
+            self.read_file()
