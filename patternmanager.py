@@ -30,6 +30,7 @@ USER_PATTERNS = [
     # 'pattern.dvdpattern',
     'pattern.loadingpattern',
     'pattern.ripplepattern',
+    'pattern.redpattern',
 ]
 
 class PatternManager():
