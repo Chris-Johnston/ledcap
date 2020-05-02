@@ -17,9 +17,9 @@ class RedPattern(Pattern):
                 self[idx] = 0xff0000
             else:
                 coords = self.index_to_coords(idx)
-                size = 10.0
+                size = 5.0
                 offset = time.time() * 1000.0 / 555.0
-                r = int(0xff * math.cos((coords[1] - offset) / size))
+                r = 127 + int(127 * math.cos((coords[1] - offset) / size))
                 if r < 0:
                     r = 0
                 self[idx] = r << 16
