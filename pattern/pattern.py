@@ -40,4 +40,11 @@ class Pattern(ABC):
         x, y = self.index_to_coords(key)
         self.colors[x][y] = value
 
+    def rgb_to_val(self, r: int, g: int, b: int):
+        return (r & 255) << 16 | (g & 255) << 8 | (b & 255)
+
+    def tuple_to_val(self, rgb: tuple):
+        r, g, b = rgb
+        return self.rgb_to_val(r, g, b)
+
 
