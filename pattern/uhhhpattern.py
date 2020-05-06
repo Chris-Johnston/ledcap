@@ -19,7 +19,7 @@ class HackScrollerPattern(Pattern):
             _, y = self.index_to_coords(idx)
             dist = (y - (self.dimensions[1] / 2)) / (self.dimensions[1] / 2)
 
-            v = math.cos(dist) % 1.0
+            v = math.cos(dist * math.pi * 2) % 1.0
             r, g, b = colorsys.hsv_to_rgb(dist % 1.0, 1.0, v)
             on_color = self.rgb_to_val(r * 255, g * 255, b * 255)
             self[idx] = on_color
