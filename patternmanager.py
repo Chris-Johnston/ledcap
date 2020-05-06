@@ -93,7 +93,7 @@ class FileBasedPatternManager(PatternManager):
         try:
             with open(self.filename, 'r') as state_file:
                 state_json = json.loads(state_file.read())
-                self.patterns = RESERVED_PATTERNS + state_json["patterns"] 
+                self.patterns = state_json["patterns"] 
                 self.handler_index = state_json["selected"]
                 # TODO: could consider adding additional state per patterns, like color values
                 self.setup_handlers(self.colors, self.dimensions)
