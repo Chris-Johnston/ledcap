@@ -20,7 +20,7 @@ class HackScrollerPattern(Pattern):
             dist = (y - (self.dimensions[1] / 2)) / (self.dimensions[1] / 2)
 
             shift = time.time() / 50.0
-            width = 50.0 + 5.2 * dist + 50.0 * math.sin(shift)
+            width = 40.0 + 0.3 * abs(dist) + 39.9 * math.sin(shift)
             v = 0.5 + 0.5 * math.cos(shift + dist * math.pi * width)
             h = 0.3 + abs(dist / 2.0) + 0.1 * math.sin(shift / 7.0)
             r, g, b = colorsys.hsv_to_rgb(h, 1.0, v)
