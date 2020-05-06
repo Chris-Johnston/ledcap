@@ -18,7 +18,7 @@ class HackScrollerPattern(Pattern):
         for idx, val in self:
             bit = idx % 32
             bitmask = 1 << bit
-            if x & bitmask > 0:
+            if int(x) & bitmask > 0:
                 self[idx] = self.on_color
             else:
                 self[idx] = 0
