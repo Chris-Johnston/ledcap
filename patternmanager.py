@@ -121,7 +121,7 @@ class ObservingFilePatternManager(FileBasedPatternManager):
         super().update()
         self.ticks += 1
         # this is a hack, but I do not care
-        if self.ticks % 300 == 0:
+        if self.ticks % 50 == 0:
             self.read_file()
 
     def off(self):
