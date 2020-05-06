@@ -18,6 +18,7 @@ class PhasesPattern(Pattern):
             r = int(0xff * math.cos((coords[1] - offset) / size) * math.sin((coords[0] + offset) / size))
             if r < 0:
                 r = 0
+            r = 0
 
             offset = time.time() * 1000.0 / 888.0
             g = int(0xff * math.cos((coords[1] + offset) / size) * math.sin((coords[0] + offset) / size))
