@@ -13,12 +13,12 @@ class HackScrollerPattern(Pattern):
         self.on_color = 0x00ff00
 
     def update(self):
-        time = time.time()
+        x = time.time()
         # cool idea, maybe have "on" color adjust hue over time
         for idx, val in self:
             bit = idx % 32
             bitmask = 1 << bit
-            if time & bitmask > 0:
+            if x & bitmask > 0:
                 self[idx] = self.on_color
             else:
                 self[idx] = 0
