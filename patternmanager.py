@@ -90,12 +90,18 @@ class FileBasedPatternManager(PatternManager):
             self.write_file()
 
     def read_file(self):
-        with open(self.filename, 'r') as state_file:
-            state_json = json.loads(state_file.read())
-            self.patterns = RESERVED_PATTERNS + state_json["patterns"] 
-            self.handler_index = state_json["selected"]
-            # TODO: could consider adding additional state per patterns, like color values
-            self.setup_handlers(self.colors, self.dimensions)
+        try:
+            with open(self.filename, 'r') as state_file:
+                state_json = json.loads(state_file.read())
+                self.patterns = RESERVED_PATTERNS + state_json["patterns"] 
+                self.handler_index = state_json["selected"]
+                # TODO: could consider adding additional state per patterns, like color values
+                self.setup_handlers(self.colors, self.dimensions)
+        except Exception as e:
+            print("Failed to read file:", e)
+            # use defaults from super init
+            # overwrite the file
+            self.write_file()
 
     def write_file(self):
         with open(self.filename, 'w') as state_file:
@@ -103,7 +109,7 @@ class FileBasedPatternManager(PatternManager):
                 "selected": self.handler_index,
                 "patterns": self.patterns,
             }
-            state_json = json.dumps(payload)
+            state_json = json.dumps(payload, indent=2, sort_keys=True)
             state_file.write(state_json)
 
 class ObservingFilePatternManager(FileBasedPatternManager):
@@ -114,8 +120,8 @@ class ObservingFilePatternManager(FileBasedPatternManager):
     def update(self):
         super().update()
         self.ticks += 1
-        # this is a hack
-        if self.ticks % 100 == 0:
+        # this is a hack, but I do not care
+        if self.ticks % 300 == 0:
             self.read_file()
 
     def off(self):
