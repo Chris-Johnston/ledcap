@@ -18,7 +18,7 @@ class HackScrollerPattern(Pattern):
         for idx, val in self:
             bit = idx % 32
             r, g, b = colorsys.hsv_to_rgb(0.5 + (bit/64), 1, 0.5)
-            on_color = self.tuple_to_val(r * 255, g * 255, b * 255)
+            on_color = self.rgb_to_val(r * 255, g * 255, b * 255)
             bitmask = 1 << bit
             if int(x) & bitmask > 0:
                 self[idx] = on_color
