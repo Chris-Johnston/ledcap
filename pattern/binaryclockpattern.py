@@ -17,7 +17,7 @@ class HackScrollerPattern(Pattern):
         # cool idea, maybe have "on" color adjust hue over time
         for idx, val in self:
             bit = idx % 32
-            r, g, b = colorsys.hsv_to_rgb(0.3 + (bit/64), 1, 0.5)
+            r, g, b = colorsys.hsv_to_rgb(-0.1 + (bit/64) % 1.0, 1, 0.5)
             on_color = self.rgb_to_val(r * 255, g * 255, b * 255)
             bitmask = 1 << bit
             if int(x) & bitmask > 0:
